@@ -1,12 +1,14 @@
 sudo: required
 dist: trusty
 before_install:
-- sudo apt-get -qq update && sudo apt-get install -y --no-install-recommends texlive-fonts-recommended texlive-latex-extra texlive-fonts-extra dvipng texlive-latex-recommended etoolbox latex-xcolor texlive-pictures chktex
-- ls /usr/share/texlive
-- which tlmgr
-- kpsewhich -var-value TEXMFHOME
+- sudo apt-get -qq update && sudo apt-get install -y --no-install-recommends texlive-fonts-recommended texlive-latex-extra texlive-fonts-extra dvipng texlive-latex-recommended etoolbox latex-xcolor texlive-pictures chktex xzdec
 script:
 - mkdir _build
+- ls /usr/share/texlive
+- ls /home/travis/texmf
+- which tlmgr
+- kpsewhich -var-value TEXMFHOME
+- sudo tlmgr init-usertree
 - sudo tlmgr install clearsans
 - pdflatex -interaction=nonstopmode -halt-on-error -output-directory _build resume.tex
 deploy:
