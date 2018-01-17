@@ -3,10 +3,8 @@ dist: trusty
 before_install:
 - sudo apt-get -qq update && sudo apt-get install -y --no-install-recommends texlive-fonts-recommended texlive-latex-extra texlive-fonts-extra dvipng texlive-latex-recommended etoolbox latex-xcolor texlive-pictures chktex xzdec
 script:
+- ls
 - mkdir _build
-- ls /usr/share/texlive
-- ls /home/travis/texmf
-- which tlmgr
 - kpsewhich -var-value TEXMFHOME
 - sudo tlmgr init-usertree
 - sudo tlmgr install clearsans
