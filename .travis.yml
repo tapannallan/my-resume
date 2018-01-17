@@ -2,26 +2,9 @@ sudo: required
 dist: trusty
 before_install:
 - sudo apt-get -qq update && sudo apt-get install -y --no-install-recommends texlive-fonts-recommended texlive-latex-extra texlive-fonts-extra dvipng texlive-latex-recommended etoolbox latex-xcolor texlive-pictures chktex
-- ls /usr/share/texlive/texmf-dist
-- PATH=$PATH:/usr/local/texlive/2013/bin/x86_64-linux
-- export PATH
-- MANPATH=$MANPATH:/usr/local/texlive/2013/texmf/doc/man
-- export MANPATH
-- INFOPATH=$INFOPATH:/usr/local/texlive/2013/texmf/doc/info
-- export INFOPATH
-- sudo apt-cache search clearsans
-- sudo apt-cache search forloop
-- sudo apt-cache search fontawesome
-- sudo apt-cache search parskip
-- sudo apt-cache search marvosym
-- sudo apt-cache search pgffor
-- sudo apt-cache search ifthen
-- sudo apt-cache search ifmtarg
-- sudo apt-cache search etoolbox
-- sudo apt-cache search ragged2e
-- sudo apt-cache search textpos
-- sudo apt-cache search xcolor
-- sudo apt-cache search tikz
+- ls /usr/share/texlive
+- which tlmgr
+- kpsewhich -var-value TEXMFHOME
 script:
 - mkdir _build
 - sudo tlmgr install clearsans
