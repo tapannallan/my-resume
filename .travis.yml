@@ -2,7 +2,6 @@ sudo: required
 dist: trusty
 before_install:
 - sudo apt-get -qq update && sudo apt-get install -y --no-install-recommends texlive-fonts-recommended texlive-latex-extra texlive-fonts-extra dvipng texlive-latex-recommended etoolbox latex-xcolor texlive-pictures chktex
-- ls /usr/local/texlive
 - ls /usr/share/texlive/texmf-dist
 - PATH=$PATH:/usr/local/texlive/2013/bin/x86_64-linux
 - export PATH
