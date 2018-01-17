@@ -1,7 +1,15 @@
 sudo: required
 dist: trusty
 before_install:
-- sudo apt-get -qq update && sudo apt-get install -y --no-install-recommends texlive-fonts-recommended texlive-latex-extra texlive-fonts-extra dvipng texlive-latex-recommended
+- sudo apt-get -qq update && sudo apt-get install -y --no-install-recommends texlive-fonts-recommended texlive-latex-extra texlive-fonts-extra dvipng texlive-latex-recommended etoolbox latex-xcolor texlive-pictures chktex
+- ls /usr/local/texlive
+- ls /usr/share/texlive/texmf-dist
+- PATH=$PATH:/usr/local/texlive/2013/bin/x86_64-linux
+- export PATH
+- MANPATH=$MANPATH:/usr/local/texlive/2013/texmf/doc/man
+- export MANPATH
+- INFOPATH=$INFOPATH:/usr/local/texlive/2013/texmf/doc/info
+- export INFOPATH
 - sudo apt-cache search clearsans
 - sudo apt-cache search forloop
 - sudo apt-cache search fontawesome
