@@ -2,11 +2,11 @@ sudo: required
 dist: trusty
 before_install:
 - sudo apt-get -qq update && sudo apt-get install -y --no-install-recommends unzip texlive-fonts-recommended texlive-latex-extra texlive-fonts-extra dvipng texlive-latex-recommended etoolbox latex-xcolor texlive-pictures chktex xzdec
+script:
+- mkdir _build
 - ls
 - mkdir -p /home/travis/texmf/install/tex/latex
 - unzip -d output_dir/ latex.zip
-script:
-- mkdir _build
 - kpsewhich -var-value TEXMFHOME
 - sudo tlmgr init-usertree
 - sudo tlmgr install clearsans
