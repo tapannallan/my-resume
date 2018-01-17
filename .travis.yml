@@ -7,7 +7,7 @@ script:
 - ls
 - mkdir -p /home/travis/texmf/tex/latex
 - unzip -d /home/travis/texmf/tex/latex/ latex.zip
-- ls /home/travis/texmf/tex/latex/
+- sudo tlmgr install tikz
 - pdflatex -interaction=nonstopmode -halt-on-error -output-directory _build resume.tex
 deploy:
   provider: script
