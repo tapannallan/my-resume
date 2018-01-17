@@ -2,9 +2,22 @@ sudo: required
 dist: trusty
 before_install:
 - sudo apt-get -qq update && sudo apt-get install -y --no-install-recommends texlive-fonts-recommended texlive-latex-extra texlive-fonts-extra dvipng texlive-latex-recommended
+- sudo apt-cache search clearsans
+- sudo apt-cache search forloop
+- sudo apt-cache search fontawesome
+- sudo apt-cache search parskip
+- sudo apt-cache search marvosym
+- sudo apt-cache search pgffor
+- sudo apt-cache search ifthen
+- sudo apt-cache search ifmtarg
+- sudo apt-cache search etoolbox
+- sudo apt-cache search ragged2e
+- sudo apt-cache search textpos
+- sudo apt-cache search xcolor
+- sudo apt-cache search tikz
 script:
 - mkdir _build
-- tlmgr install clearsans
+- sudo tlmgr install clearsans
 - pdflatex -interaction=nonstopmode -halt-on-error -output-directory _build resume.tex
 deploy:
   provider: script
