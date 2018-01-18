@@ -20,6 +20,7 @@
 \RequirePackage{parskip}
 \RequirePackage{fontawesome}
 \RequirePackage{forloop}
+\RequirePackage{enumitem}
 
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{article}}
 \ProcessOptions\relax
@@ -63,9 +64,8 @@
 	\settowidth{\SectionTitleLength}{\huge #1 }% Calculate the width of the section title
 	\addtolength\TotalSectionLength{-\SectionTitleLength}% Subtract the section title width from the total width
 	\addtolength\TotalSectionLength{-2.22221pt}% Modifier to remove overfull box warning
-	\vspace{15pt}% Whitespace before the section title
 	{\color{black!80} \huge #1 \rule[0.15\baselineskip]{\TotalSectionLength}{1pt}}% Print the title and auto-width rule
-	\vspace{8pt}% Whitespace after the section title
+	\vspace{8pt}
 }
 
 % Define custom commands for CV info
@@ -82,17 +82,31 @@
 \newcommand{\cvstackoverflow}[1]{\renewcommand{\cvstackoverflow}{#1}}
 \newcommand{\cvlinkedin}[1]{\renewcommand{\cvlinkedin}{#1}}
 
+
+
+% Skill Content
+\newcommand{\skjvmlanguages}[1]{\renewcommand{\skjvmlanguages}{#1}}
+\newcommand{\skjavaframeworks}[1]{\renewcommand{\skjavaframeworks}{#1}}
+\newcommand{\skotherlanguages}[1]{\renewcommand{\skotherlanguages}{#1}}
+\newcommand{\skdatabases}[1]{\renewcommand{\skdatabases}{#1}}
+\newcommand{\skbuildtools}[1]{\renewcommand{\skbuildtools}{#1}}
+\newcommand{\skfrontend}[1]{\renewcommand{\skfrontend}{#1}}
+
+
 % Command for printing the contact information icons
 \newcommand*\icon[1]{\tikz[baseline=(char.base)]{\node[shape=circle,draw,inner sep=1pt, fill=mainblue,mainblue,text=white] (char) {#1};}}
 
 \newcommand*\fontawesome[1]{\tikz[baseline=(char.base)]{\node[shape=circle,draw,inner sep=1pt, fill=mainblue,mainblue,text=white] (char) {#1};}}
 
+\newcounter{loop}
+
 % Command for printing skill progress circles
 \newcommand\skills[1]{ 
-	\renewcommand{\skills}{
-		\begin{tikzpicture}
-			\newcounter{loop}
-			\foreach [count=\i] \x/\y in {#1}{
+	\begin{tikzpicture}
+			
+			\foreach [count=\i] \x/\y in #1{
+
+				\begingroup
 	
 				\forloop{loop}{0}{\value{loop} < \y }{
 					\filldraw[fill=mainblue,mainblue] (3 + \value{loop} * 0.7,\i*0.6) circle (6pt);
@@ -102,15 +116,15 @@
 				}
 				\node [right] at (0,\i*0.6) {\x};
 
-
+				\endgroup
 				% \filldraw[fill=maingray,maingray] (0,\i+0.4) circle (6pt);
 				% \node [left] at (0,\i+0.4) {text};
 				% \draw[fill=maingray,maingray] (0,\i) rectangle (6,\i+0.4);
 				% \draw[fill=white,mainblue](0,\i) rectangle (\y,\i+0.4);
 				% \node [above right] at (0,\i+0.4) {\x};
 			}
-		\end{tikzpicture}
-	}
+	\end{tikzpicture}
+	
 }
 
 % Command for education table
@@ -121,7 +135,7 @@
 			{\normalsize\color{mainblue}\x}~\\
 			{\footnotesize\color{black}\y}~\\
 			{\footnotesize\color{black}\z}~\\
-			\clearpage
+			{\vspace{8pt}}
 		}	
 		\end{flushleft}
 	}
@@ -154,7 +168,7 @@
 %	 EMPTY SIDEBAR LAYOUT
 %----------------------------------------------------------------------------------------
 
-\newcommand{\makeemptyprofile}{
+\newcommand{\makesecondpageprofile}{
 	\begin{tikzpicture}[remember picture,overlay]
    		\node [rectangle, fill=sidecolor, anchor=north, minimum width=9cm, minimum height=\paperheight+1cm] (box) at (-5cm,0.5cm){};
 	\end{tikzpicture}
@@ -162,6 +176,22 @@
 	%------------------------------------------------
 
 	\begin{textblock}{6}(0.5, 0.2)
+		%------------------------------------------------}
+		\profilesection{Skills}
+		
+		\subsection{Java Frameworks}
+		\skills{\skjavaframeworks}
+
+		\subsection{Data Formats}
+		% \skills
+
+		\subsection{Databases}
+		% \skills
+
+		% \subsection{Python}
+
+		% \subsection{Other}
+		%------------------------------------------------
 			
 	\end{textblock}
 }
@@ -215,19 +245,16 @@
 		\end{tabular}
 
 		%------------------------------------------------
-		
+		\vspace{12pt}
 		\profilesection{Education}
-
 		\education
-
+		\vspace{-25pt}
 		%------------------------------------------------
 
+		%------------------------------------------------
 		\profilesection{Skills}
-
-		\skills
-		% \skillstext
-		% \scriptsize
-		% (*)[The skill scale is from 0 (Fundamental Awareness) to 6 (Expert).]			
+		\subsection{Java Ecosystem}
+		\skills{\skjvmlanguages}
 		%------------------------------------------------
 			
 	\end{textblock}
@@ -317,6 +344,13 @@
 	#1&\parbox[t]{0.83\textwidth}{%
 		\textbf{#2}%
 	}\\
+}
+
+\newcommand{\twentyitemssinglecol}[1]{%
+	\parbox[t]{0.83\textwidth}{%
+		\textbf{#1}%
+	}\\
+	\vspace{8pt}
 }
 
 %----------------------------------------------------------------------------------------
