@@ -85,12 +85,20 @@
 
 
 % Skill Content
-\newcommand{\skjvmlanguages}[1]{\renewcommand{\skjvmlanguages}{#1}}
-\newcommand{\skjavaframeworks}[1]{\renewcommand{\skjavaframeworks}{#1}}
+\newcommand{\sklanguages}[1]{\renewcommand{\sklanguages}{#1}}
+\newcommand{\skjavafwsnlib}[1]{\renewcommand{\skjavafwsnlib}{#1}}
 \newcommand{\skotherlanguages}[1]{\renewcommand{\skotherlanguages}{#1}}
+\newcommand{\skservers}[1]{\renewcommand{\skservers}{#1}}
 \newcommand{\skdatabases}[1]{\renewcommand{\skdatabases}{#1}}
-\newcommand{\skbuildtools}[1]{\renewcommand{\skbuildtools}{#1}}
+\newcommand{\skxmltools}[1]{\renewcommand{\skxmltools}{#1}}
+\newcommand{\skdataformats}[1]{\renewcommand{\skdataformats}{#1}}
 \newcommand{\skfrontend}[1]{\renewcommand{\skfrontend}{#1}}
+\newcommand{\sktools}[1]{\renewcommand{\sktools}{#1}}
+\newcommand{\skbuildtools}[1]{\renewcommand{\skbuildtools}{#1}}
+\newcommand{\sktesting}[1]{\renewcommand{\sktesting}{#1}}
+\newcommand{\skcloud}[1]{\renewcommand{\skcloud}{#1}}
+\newcommand{\skinfrastructure}[1]{\renewcommand{\skinfrastructure}{#1}}
+\newcommand{\skotherInterests}[1]{\renewcommand{\skotherInterests}{#1}}
 
 
 % Command for printing the contact information icons
@@ -109,12 +117,12 @@
 				\begingroup
 	
 				\forloop{loop}{0}{\value{loop} < \y }{
-					\filldraw[fill=mainblue,mainblue] (3 + \value{loop} * 0.7,\i*0.6) circle (6pt);
+					\filldraw[fill=mainblue,mainblue] (3 + \value{loop} * 0.7,\i*0.6) circle (5pt);
 				}
 				\forloop{loop}{\y}{\value{loop} < 5 }{
-					\filldraw[fill=maingray,maingray] (3 + \value{loop} * 0.7,\i*0.6) circle (6pt);
+					\filldraw[fill=maingray,maingray] (3 + \value{loop} * 0.7,\i*0.6) circle (5pt);
 				}
-				\node [right] at (0,\i*0.6) {\x};
+				\node [right] at (0,\i*0.6) {\footnotesize\x};
 
 				\endgroup
 				% \filldraw[fill=maingray,maingray] (0,\i+0.4) circle (6pt);
@@ -164,38 +172,6 @@
 % 		\end{flushleft}
 % 	}
 % }
-%----------------------------------------------------------------------------------------
-%	 EMPTY SIDEBAR LAYOUT
-%----------------------------------------------------------------------------------------
-
-\newcommand{\makesecondpageprofile}{
-	\begin{tikzpicture}[remember picture,overlay]
-   		\node [rectangle, fill=sidecolor, anchor=north, minimum width=9cm, minimum height=\paperheight+1cm] (box) at (-5cm,0.5cm){};
-	\end{tikzpicture}
-
-	%------------------------------------------------
-
-	\begin{textblock}{6}(0.5, 0.2)
-		%------------------------------------------------}
-		\profilesection{Skills}
-		
-		\subsection{Java Frameworks}
-		\skills{\skjavaframeworks}
-
-		\subsection{Data Formats}
-		% \skills
-
-		\subsection{Databases}
-		% \skills
-
-		% \subsection{Python}
-
-		% \subsection{Other}
-		%------------------------------------------------
-			
-	\end{textblock}
-}
-
 
 %----------------------------------------------------------------------------------------
 %	 SIDEBAR LAYOUT
@@ -253,12 +229,107 @@
 
 		%------------------------------------------------
 		\profilesection{Skills}
-		\subsection{Java Ecosystem}
-		\skills{\skjvmlanguages}
+		\subsection{Languages}
+		\skills{\sklanguages}
 		%------------------------------------------------
 			
 	\end{textblock}
 }
+
+%----------------------------------------------------------------------------------------
+%	 SECOND PAGE SIDEBAR LAYOUT
+%----------------------------------------------------------------------------------------
+
+\newcommand{\makesecondpageprofile}{
+	\begin{tikzpicture}[remember picture,overlay]
+   		\node [rectangle, fill=sidecolor, anchor=north, minimum width=9cm, minimum height=\paperheight+1cm] (box) at (-5cm,0.5cm){};
+	\end{tikzpicture}
+
+	\begin{textblock}{6}(0.5, 0.2)
+
+		%------------------------------------------------
+		\subsection{Other Languages}
+		\skills{\skotherlanguages}
+		%------------------------------------------------
+
+		%------------------------------------------------
+		\subsection{Java Frameworks and Libraries}
+		\skills{\skjavafwsnlib}
+		%------------------------------------------------
+
+		%------------------------------------------------
+		\subsection{Servers}
+		\skills{\skservers}
+		%------------------------------------------------
+
+		%------------------------------------------------
+		\subsection{Databases}
+		\skills{\skdatabases}
+		%------------------------------------------------
+
+		%------------------------------------------------
+		\subsection{XML}
+		\skills{\skxmltools}
+		%------------------------------------------------
+
+		%------------------------------------------------
+		\subsection{Data formats}
+		\skills{\skdataformats}
+		%------------------------------------------------
+			
+	\end{textblock}
+}
+
+%----------------------------------------------------------------------------------------
+
+
+%----------------------------------------------------------------------------------------
+%	 THIRD PAGE SIDEBAR LAYOUT
+%----------------------------------------------------------------------------------------
+
+\newcommand{\makethirdpageprofile}{
+	\begin{tikzpicture}[remember picture,overlay]
+   		\node [rectangle, fill=sidecolor, anchor=north, minimum width=9cm, minimum height=\paperheight+1cm] (box) at (-5cm,0.5cm){};
+	\end{tikzpicture}
+
+	\begin{textblock}{6}(0.5, 0.2)		
+
+		%------------------------------------------------
+		\subsection{Build Tools}
+		\skills{\skbuildtools}
+		%------------------------------------------------
+
+		%------------------------------------------------
+		\subsection{Frontend}
+		\skills{\skfrontend}
+		%------------------------------------------------
+
+		%------------------------------------------------
+		\subsection{Tools}
+		\skills{\sktools}
+		%------------------------------------------------
+
+		%------------------------------------------------
+		\subsection{Cloud Tools}
+		\skills{\skcloud}
+		%------------------------------------------------
+
+		%------------------------------------------------
+		\subsection{CI,Infrastructure}
+		\skills{\skinfrastructure}
+		%------------------------------------------------
+
+		%------------------------------------------------
+		\subsection{Other}
+		\skills{\skotherInterests}
+		%------------------------------------------------
+			
+	\end{textblock}
+}
+
+%----------------------------------------------------------------------------------------
+
+
 
 %----------------------------------------------------------------------------------------
 %	 COLOURED SECTION TITLE BOX
@@ -318,12 +389,24 @@
 	\end{tabular*}
 }
 
-\newcommand{\twentyitem}[4]{%
-	#1&\parbox[t]{0.83\textwidth}{%
-		\textbf{#2}%
-		\hfill%
-		{\footnotesize#3}\\%
-		#4\vspace{\parsep}%
+% \newcommand{\twentyitem}[4]{%
+% 	\parbox[t]{0.20\textwidth}{%
+% 		\normalsize\color{mainblue}#1\\
+% 		\footnotesize\color{maingray}#2\\
+% 		\tiny\color{black}#3\\
+% 	}&\parbox[t]{0.78\textwidth}{%
+% 		\footnotesize#4\vspace{\parsep}%
+% 	}\\
+% }
+
+\newcommand{\twentyitem}[5]{%
+	\parbox[t]{0.20\textwidth}{%
+		\normalsize\color{mainblue}#1\\
+		\footnotesize\color{maingray}#2\\
+		\tiny\color{black}#3\\
+		\tiny\color{black}#4\\
+	}&\parbox[t]{0.78\textwidth}{%
+		\footnotesize#5\vspace{\parsep}%
 	}\\
 }
 
