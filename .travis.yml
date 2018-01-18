@@ -4,7 +4,7 @@ before_install:
 - sudo apt-get -qq update && sudo apt-get install -y --no-install-recommends unzip texlive-fonts-recommended texlive-latex-extra texlive-fonts-extra dvipng texlive-latex-recommended etoolbox latex-xcolor texlive-pictures chktex xzdec
 script:
 - mkdir _build
-- ls
+- tlmgr init-usertree
 - mkdir -p /home/travis/texmf/tex/latex
 - unzip -d /home/travis/texmf/tex/latex/ latex.zip
 - sudo tlmgr install tikz
