@@ -118,9 +118,9 @@
 	\renewcommand{\education}{
 		\begin{flushleft}
 		\foreach [count=\i] \x/\y/\z in {#1}{
-			{\normalsize\color{mainblue}\x}\\
-			{\footnotesize\color{black}\y}\\
-			{\footnotesize\color{black}\z}\\
+			{\normalsize\color{mainblue}\x}~\\
+			{\footnotesize\color{black}\y}~\\
+			{\footnotesize\color{black}\z}~\\
 			\clearpage
 		}	
 		\end{flushleft}
