@@ -74,7 +74,6 @@
 \newcommand{\cvnumberphone}[1]{\renewcommand{\cvnumberphone}{#1}}
 \newcommand{\cvaddress}[1]{\renewcommand{\cvaddress}{#1}}
 \newcommand{\cvsite}[1]{\renewcommand{\cvsite}{#1}}
-\newcommand{\aboutme}[1]{\renewcommand{\aboutme}{#1}}
 \newcommand{\profilepic}[1]{\renewcommand{\profilepic}{#1}}
 \newcommand{\cvname}[1]{\renewcommand{\cvname}{#1}}
 \newcommand{\cvjobtitle}[1]{\renewcommand{\cvjobtitle}{#1}}
@@ -114,6 +113,20 @@
 	}
 }
 
+% Command for education table
+\newcommand\education[1]{
+	\renewcommand{\education}{
+		\begin{flushleft}
+		\foreach [count=\i] \x/\y/\z in {#1}{
+			{\normalsize\color{mainblue}\x}\\
+			{\footnotesize\color{black}\y}\\
+			{\footnotesize\color{black}\z}\\
+			\clearpage
+		}	
+		\end{flushleft}
+	}
+}
+
 % Command for printing skill progress bars
 % \newcommand\skills[1]{ 
 % 	\renewcommand{\skills}{
@@ -128,15 +141,15 @@
 % }
 
 % Command for printing skills text
-\newcommand\skillstext[1]{ 
-	\renewcommand{\skillstext}{
-		\begin{flushleft}
-			\foreach [count=\i] \x/\y in {#1}{ 
-				\x$ \star $\y
-			}
-		\end{flushleft}
-	}
-}
+% \newcommand\skillstext[1]{ 
+% 	\renewcommand{\skillstext}{
+% 		\begin{flushleft}
+% 			\foreach [count=\i] \x/\y in {#1}{ 
+% 				\x$ \star $\y
+% 			}
+% 		\end{flushleft}
+% 	}
+% }
 %----------------------------------------------------------------------------------------
 %	 EMPTY SIDEBAR LAYOUT
 %----------------------------------------------------------------------------------------
@@ -203,23 +216,18 @@
 
 		%------------------------------------------------
 		
-		\ifthenelse{\equal{\aboutme}{}}{}{
+		\profilesection{Education}
 
-			\profilesection{Profile}
-			\begin{flushleft}
-				\aboutme
-			\end{flushleft}
-		}
+		\education
 
 		%------------------------------------------------
 
 		\profilesection{Skills}
 
 		\skills
-		\skillstext
-		\scriptsize
-		(*)[The skill scale is from 0 (Fundamental Awareness) to 6 (Expert).]
-			
+		% \skillstext
+		% \scriptsize
+		% (*)[The skill scale is from 0 (Fundamental Awareness) to 6 (Expert).]			
 		%------------------------------------------------
 			
 	\end{textblock}
@@ -231,34 +239,35 @@
 
 % Command to create the rounded boxes around the first three letters of section titles
 \newcommand*\round[2]{%
-	\tikz[baseline=(char.base)]\node[anchor=north west, draw,rectangle, rounded corners, inner sep=1.6pt, minimum size=5.5mm, text height=3.6mm, fill=#2,#2,text=white](char){#1};%
+	\tikz[baseline=(char.base)]\node[anchor=north west, draw,rectangle, rounded corners, inner sep=6pt, minimum size=8mm, text height=3.6mm, fill=mainblue,mainblue,text=white](char){#1};%
+	\vspace{8 pt}
 }
 
-\newcounter{colorCounter}
-\newcommand{\sectioncolor}[1]{%
-	{%
-		\round{#1}{
-			\ifcase\value{colorCounter}%
-			maingray\or%
-			mainblue\or%
-			maingray\or%
-			mainblue\or%
-			maingray\or%
-			mainblue\or%
-			maingray\or%
-			mainblue\or%
- 			maingray\or%
-			mainblue\else%
-			maingray\fi%
-		}%
-	}%
-	\stepcounter{colorCounter}%
-}
+% \newcounter{colorCounter}
+% \newcommand{\sectioncolor}[1]{%
+% 	{%
+% 		\round{#1}{
+% 			\ifcase\value{colorCounter}%
+% 			maingray\or%
+% 			mainblue\or%
+% 			maingray\or%
+% 			mainblue\or%
+% 			maingray\or%
+% 			mainblue\or%
+% 			maingray\or%
+% 			mainblue\or%
+%  			maingray\or%
+% 			mainblue\else%
+% 			maingray\fi%
+% 		}%
+% 	}%
+% 	\stepcounter{colorCounter}%
+% }
 
 \renewcommand{\section}[1]{
 	{%
 		\color{gray}%
-		\Large\sectioncolor{#1}%
+		\Large\round{#1}{mainblue}%
 	}
 }
 
