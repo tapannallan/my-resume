@@ -21,6 +21,7 @@
 \RequirePackage{fontawesome}
 \RequirePackage{forloop}
 \RequirePackage{enumitem}
+\usepackage{amsfonts}
 
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{article}}
 \ProcessOptions\relax
@@ -34,16 +35,26 @@
 \definecolor{sidecolor}{HTML}{E7E7E7}
 \definecolor{mainblue}{HTML}{0E5484}
 \definecolor{maingray}{HTML}{B9B9B9}
+\definecolor{backg}{RGB}{225,236,244}
+\definecolor{tagtxt}{RGB}{88,115,159}
 
 %----------------------------------------------------------------------------------------
 %	 MISC CONFIGURATIONS
 %----------------------------------------------------------------------------------------
+\setlist[itemize,1]{label=$\checkmark$}
 
 \renewcommand{\bfseries}{\color{gray}} % Make \textbf produce coloured text instead
-
 \pagestyle{empty} % Disable headers and footers
-
 \setlength{\parindent}{0pt} % Disable paragraph indentation
+
+%----------------------------------------------------------------------------------------
+%	 COMMAND TO CREATE A SO STYLE TAG. Credit : https://tex.stackexchange.com/a/311949
+%----------------------------------------------------------------------------------------
+\newcommand\maketag[1]{%
+    \tikz[baseline]{%
+        \node[anchor=base, text=tagtxt, fill=backg, font=\sffamily, text depth=.5mm] {#1};
+    }%
+}
 
 %----------------------------------------------------------------------------------------
 %	 SIDEBAR DEFINITIONS
@@ -86,26 +97,11 @@
 
 % Skill Content
 \newcommand{\sklanguages}[1]{\renewcommand{\sklanguages}{#1}}
-\newcommand{\skjavafwsnlib}[1]{\renewcommand{\skjavafwsnlib}{#1}}
-\newcommand{\skotherlanguages}[1]{\renewcommand{\skotherlanguages}{#1}}
-\newcommand{\skservers}[1]{\renewcommand{\skservers}{#1}}
-\newcommand{\skdatabases}[1]{\renewcommand{\skdatabases}{#1}}
-\newcommand{\skxmltools}[1]{\renewcommand{\skxmltools}{#1}}
-\newcommand{\skdataformats}[1]{\renewcommand{\skdataformats}{#1}}
-\newcommand{\skfrontend}[1]{\renewcommand{\skfrontend}{#1}}
-\newcommand{\sktools}[1]{\renewcommand{\sktools}{#1}}
-\newcommand{\skbuildtools}[1]{\renewcommand{\skbuildtools}{#1}}
-\newcommand{\sktesting}[1]{\renewcommand{\sktesting}{#1}}
-\newcommand{\skcloud}[1]{\renewcommand{\skcloud}{#1}}
-\newcommand{\skinfrastructure}[1]{\renewcommand{\skinfrastructure}{#1}}
-\newcommand{\skotherInterests}[1]{\renewcommand{\skotherInterests}{#1}}
-
+\newcommand{\skplatformsntools}[1]{\renewcommand{\skplatformsntools}{#1}}
 
 % Command for printing the contact information icons
 \newcommand*\icon[1]{\tikz[baseline=(char.base)]{\node[shape=circle,draw,inner sep=1pt, fill=mainblue,mainblue,text=white] (char) {#1};}}
-
 \newcommand*\fontawesome[1]{\tikz[baseline=(char.base)]{\node[shape=circle,draw,inner sep=1pt, fill=mainblue,mainblue,text=white] (char) {#1};}}
-
 \newcounter{loop}
 
 % Command for printing skill progress circles
@@ -149,30 +145,6 @@
 	}
 }
 
-% Command for printing skill progress bars
-% \newcommand\skills[1]{ 
-% 	\renewcommand{\skills}{
-% 		\begin{tikzpicture}
-% 			\foreach [count=\i] \x/\y in {#1}{
-% 				\draw[fill=maingray,maingray] (0,\i) rectangle (6,\i+0.4);
-% 				\draw[fill=white,mainblue](0,\i) rectangle (\y,\i+0.4);
-% 				\node [above right] at (0,\i+0.4) {\x};
-% 			}
-% 		\end{tikzpicture}
-% 	}
-% }
-
-% Command for printing skills text
-% \newcommand\skillstext[1]{ 
-% 	\renewcommand{\skillstext}{
-% 		\begin{flushleft}
-% 			\foreach [count=\i] \x/\y in {#1}{ 
-% 				\x$ \star $\y
-% 			}
-% 		\end{flushleft}
-% 	}
-% }
-
 %----------------------------------------------------------------------------------------
 %	 SIDEBAR LAYOUT
 %----------------------------------------------------------------------------------------
@@ -184,29 +156,15 @@
 
 	%------------------------------------------------
 
-	\begin{textblock}{6}(0.5, 0.2)
-			
-		%------------------------------------------------
-		
-		\ifthenelse{\equal{\profilepic}{}}{}{
-			\begin{center}
-				\begin{tikzpicture}[x=\imagescale,y=-\imagescale]
-					\clip (600/2, 567/2) circle (567/2);
-					\node[anchor=north west, inner sep=0pt, outer sep=0pt] at (0,0) {\includegraphics[width=\imagewidth]{\profilepic}};
-				\end{tikzpicture}
-			\end{center}
-		}
+	\begin{textblock}{6}(0.5, 1.0)
 
 		%------------------------------------------------
-
 		{\Huge\color{black}\cvname}
 
-		%------------------------------------------------
-
-		{\large\color{gray}\cvjobtitle}
+		{\hspace{4 pt}\large\color{gray}\cvjobtitle}
 
 		%------------------------------------------------
-		\vspace{15 pt}
+		\vspace{12 pt}
 		%------------------------------------------------
 
 		\renewcommand{\arraystretch}{1.6}
@@ -217,11 +175,11 @@
 			\ifthenelse{\equal{\cvgithub}{}}{}{\textsc{\large\icon{\faGithub}} & \href{\cvgithub}{\cvgithub}\\}
 			\ifthenelse{\equal{\cvbitbucket}{}}{}{\textsc{\large\icon{\faBitbucket}} & \href{\cvbitbucket}{\cvbitbucket}\\}
 			\ifthenelse{\equal{\cvstackoverflow}{}}{}{\textsc{\large\icon{\faStackOverflow}} & \href{\cvstackoverflow}{\cvstackoverflow}\\}
-			\ifthenelse{\equal{\cvlinkedin}{}}{}{\textsc{\large\icon{\faLinkedin}} & \href{\cvlinkedin}{\cvlinkedin}\\}
+			\ifthenelse{\equal{\cvlinkedin}{}}{}{\textsc{\large\icon{\faLinkedin}} & \href{\cvlinkedin}{\cvlinkedin}}
 		\end{tabular}
 
 		%------------------------------------------------
-		\vspace{12pt}
+		\vspace{15pt}
 		\profilesection{Education}
 		\education
 		\vspace{-25pt}
@@ -231,6 +189,9 @@
 		\profilesection{Skills}
 		\subsection{Languages}
 		\skills{\sklanguages}
+		\vspace{10pt}
+		\subsection{Platforms and Tools}
+		\skills{\skplatformsntools}
 		%------------------------------------------------
 			
 	\end{textblock}
@@ -248,33 +209,33 @@
 	\begin{textblock}{6}(0.5, 0.2)
 
 		%------------------------------------------------
-		\subsection{Other Languages}
-		\skills{\skotherlanguages}
-		%------------------------------------------------
+		% \subsection{Other Languages}
+		% \skills{\skotherlanguages}
+		% %------------------------------------------------
 
-		%------------------------------------------------
-		\subsection{Java Frameworks and Libraries}
-		\skills{\skjavafwsnlib}
-		%------------------------------------------------
+		% %------------------------------------------------
+		% \subsection{Java Frameworks and Libraries}
+		% \skills{\skjavafwsnlib}
+		% %------------------------------------------------
 
-		%------------------------------------------------
-		\subsection{Servers}
-		\skills{\skservers}
-		%------------------------------------------------
+		% %------------------------------------------------
+		% \subsection{Servers}
+		% \skills{\skservers}
+		% %------------------------------------------------
 
-		%------------------------------------------------
-		\subsection{Databases}
-		\skills{\skdatabases}
-		%------------------------------------------------
+		% %------------------------------------------------
+		% \subsection{Databases}
+		% \skills{\skdatabases}
+		% %------------------------------------------------
 
-		%------------------------------------------------
-		\subsection{XML}
-		\skills{\skxmltools}
-		%------------------------------------------------
+		% %------------------------------------------------
+		% \subsection{XML}
+		% \skills{\skxmltools}
+		% %------------------------------------------------
 
-		%------------------------------------------------
-		\subsection{Data formats}
-		\skills{\skdataformats}
+		% %------------------------------------------------
+		% \subsection{Data formats}
+		% \skills{\skdataformats}
 		%------------------------------------------------
 			
 	\end{textblock}
@@ -295,33 +256,33 @@
 	\begin{textblock}{6}(0.5, 0.2)		
 
 		%------------------------------------------------
-		\subsection{Build Tools}
-		\skills{\skbuildtools}
-		%------------------------------------------------
+		% \subsection{Build Tools}
+		% \skills{\skbuildtools}
+		% %------------------------------------------------
 
-		%------------------------------------------------
-		\subsection{Frontend}
-		\skills{\skfrontend}
-		%------------------------------------------------
+		% %------------------------------------------------
+		% \subsection{Frontend}
+		% \skills{\skfrontend}
+		% %------------------------------------------------
 
-		%------------------------------------------------
-		\subsection{Tools}
-		\skills{\sktools}
-		%------------------------------------------------
+		% %------------------------------------------------
+		% \subsection{Tools}
+		% \skills{\sktools}
+		% %------------------------------------------------
 
-		%------------------------------------------------
-		\subsection{Cloud Tools}
-		\skills{\skcloud}
-		%------------------------------------------------
+		% %------------------------------------------------
+		% \subsection{Cloud Tools}
+		% \skills{\skcloud}
+		% %------------------------------------------------
 
-		%------------------------------------------------
-		\subsection{CI,Infrastructure}
-		\skills{\skinfrastructure}
-		%------------------------------------------------
+		% %------------------------------------------------
+		% \subsection{CI,Infrastructure}
+		% \skills{\skinfrastructure}
+		% %------------------------------------------------
 
-		%------------------------------------------------
-		\subsection{Other}
-		\skills{\skotherInterests}
+		% %------------------------------------------------
+		% \subsection{Other}
+		% \skills{\skotherInterests}
 		%------------------------------------------------
 			
 	\end{textblock}
@@ -400,12 +361,12 @@
 % }
 
 \newcommand{\twentyitem}[5]{%
-	\parbox[t]{0.20\textwidth}{%
+	\parbox[t]{0.30\textwidth}{%
 		\normalsize\color{mainblue}#1\\
 		\footnotesize\color{maingray}#2\\
 		\tiny\color{black}#3\\
 		\tiny\color{black}#4\\
-	}&\parbox[t]{0.78\textwidth}{%
+	}&\parbox[t]{0.70\textwidth}{%
 		\footnotesize#5\vspace{\parsep}%
 	}\\
 }
