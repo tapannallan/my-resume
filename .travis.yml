@@ -6,11 +6,13 @@ services:
   - docker
 
 before_install:
-- rm -rf build && mkdir build
+- mkdir -p build
+- rm -rf build/*
 - docker build -t my-resume .
 
 script:
 - docker run -i --rm -v ${PWD}/build:/output my-resume
+- ls
 - ls build
 
 deploy:
