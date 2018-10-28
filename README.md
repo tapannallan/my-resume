@@ -5,6 +5,6 @@
 My Personal Resume built in LaTEX. This is based off of the [Twenty Seconds CV Template by spagnuolocarmine.](https://github.com/spagnuolocarmine/TwentySecondsCurriculumVitae-LaTex)
 
 
-[Download Resume here](https://github.com/tapanchandra/my-resume/blob/master/resume.pdf)
+[Download Resume here](https://github.com/tapanchandra/my-resume/raw/master/build/resume.pdf)
 
 
