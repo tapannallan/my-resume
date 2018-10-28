@@ -1,8 +1,7 @@
 sudo: required
 dist: trusty
 before_install:
-- DEBIAN_FRONTEND=noninteractive sudo apt-get -qq update && sudo apt-get install -y --no-install-recommends unzip latexmk texlive-latex-extra texlive-fonts-extra
-- DEBIAN_FRONTEND=noninteractive sudo apt-get update
+- DEBIAN_FRONTEND=noninteractive sudo apt-get -qq update && sudo apt-get install -y --no-install-recommends unzip texlive-fonts-recommended latex-xcolor texlive-latex-recommended texlive-latex-extra texlive-fonts-extra latexmk
 script:
 - mkdir _build
 - pdflatex -shell-escape -synctex=1 -interaction=nonstopmode -output-directory _build resume.tex
