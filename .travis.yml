@@ -6,6 +6,7 @@ services:
   - docker
 
 before_install:
+- ls
 - mkdir -p build
 - rm -rf build/*
 - docker build -t my-resume .
