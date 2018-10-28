@@ -2,3 +2,8 @@
 *.log
 *.out
 *.synctex.gz
+*.aux
+*.blg
+*.fdb_latexmk
+*.log
+*.synctex.gz*.bbl

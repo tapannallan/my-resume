@@ -41,7 +41,6 @@
 %----------------------------------------------------------------------------------------
 %	 MISC CONFIGURATIONS
 %----------------------------------------------------------------------------------------
-\setlist[itemize,1]{label=$\checkmark$}
 
 \renewcommand{\bfseries}{\color{gray}} % Make \textbf produce coloured text instead
 \pagestyle{empty} % Disable headers and footers
@@ -63,10 +62,10 @@
 \setlength{\TPHorizModule}{1cm} % Left margin
 \setlength{\TPVertModule}{1cm} % Top margin
 
-\newlength\imagewidth
-\newlength\imagescale
-\pgfmathsetlength{\imagewidth}{5cm}
-\pgfmathsetlength{\imagescale}{\imagewidth/600}
+% \newlength\imagewidth
+% \newlength\imagescale
+% \pgfmathsetlength{\imagewidth}{5cm}
+% \pgfmathsetlength{\imagescale}{\imagewidth/600}
 
 \newlength{\TotalSectionLength} % Define a new length to hold the remaining line width after the section title is printed
 \newlength{\SectionTitleLength} % Define a new length to hold the width of the section title
@@ -197,100 +196,6 @@
 	\end{textblock}
 }
 
-%----------------------------------------------------------------------------------------
-%	 SECOND PAGE SIDEBAR LAYOUT
-%----------------------------------------------------------------------------------------
-
-\newcommand{\makesecondpageprofile}{
-	\begin{tikzpicture}[remember picture,overlay]
-   		\node [rectangle, fill=sidecolor, anchor=north, minimum width=9cm, minimum height=\paperheight+1cm] (box) at (-5cm,0.5cm){};
-	\end{tikzpicture}
-
-	\begin{textblock}{6}(0.5, 0.2)
-
-		%------------------------------------------------
-		% \subsection{Other Languages}
-		% \skills{\skotherlanguages}
-		% %------------------------------------------------
-
-		% %------------------------------------------------
-		% \subsection{Java Frameworks and Libraries}
-		% \skills{\skjavafwsnlib}
-		% %------------------------------------------------
-
-		% %------------------------------------------------
-		% \subsection{Servers}
-		% \skills{\skservers}
-		% %------------------------------------------------
-
-		% %------------------------------------------------
-		% \subsection{Databases}
-		% \skills{\skdatabases}
-		% %------------------------------------------------
-
-		% %------------------------------------------------
-		% \subsection{XML}
-		% \skills{\skxmltools}
-		% %------------------------------------------------
-
-		% %------------------------------------------------
-		% \subsection{Data formats}
-		% \skills{\skdataformats}
-		%------------------------------------------------
-			
-	\end{textblock}
-}
-
-%----------------------------------------------------------------------------------------
-
-
-%----------------------------------------------------------------------------------------
-%	 THIRD PAGE SIDEBAR LAYOUT
-%----------------------------------------------------------------------------------------
-
-\newcommand{\makethirdpageprofile}{
-	\begin{tikzpicture}[remember picture,overlay]
-   		\node [rectangle, fill=sidecolor, anchor=north, minimum width=9cm, minimum height=\paperheight+1cm] (box) at (-5cm,0.5cm){};
-	\end{tikzpicture}
-
-	\begin{textblock}{6}(0.5, 0.2)		
-
-		%------------------------------------------------
-		% \subsection{Build Tools}
-		% \skills{\skbuildtools}
-		% %------------------------------------------------
-
-		% %------------------------------------------------
-		% \subsection{Frontend}
-		% \skills{\skfrontend}
-		% %------------------------------------------------
-
-		% %------------------------------------------------
-		% \subsection{Tools}
-		% \skills{\sktools}
-		% %------------------------------------------------
-
-		% %------------------------------------------------
-		% \subsection{Cloud Tools}
-		% \skills{\skcloud}
-		% %------------------------------------------------
-
-		% %------------------------------------------------
-		% \subsection{CI,Infrastructure}
-		% \skills{\skinfrastructure}
-		% %------------------------------------------------
-
-		% %------------------------------------------------
-		% \subsection{Other}
-		% \skills{\skotherInterests}
-		%------------------------------------------------
-			
-	\end{textblock}
-}
-
-%----------------------------------------------------------------------------------------
-
-
 
 %----------------------------------------------------------------------------------------
 %	 COLOURED SECTION TITLE BOX
@@ -326,7 +231,7 @@
 \renewcommand{\section}[1]{
 	{%
 		\color{gray}%
-		\Large\round{#1}{mainblue}%
+		\large\round{#1}{mainblue}%
 	}
 }
 
@@ -361,12 +266,12 @@
 % }
 
 \newcommand{\twentyitem}[5]{%
-	\parbox[t]{0.30\textwidth}{%
+	\parbox[t]{0.25\textwidth}{%
 		\normalsize\color{mainblue}#1\\
 		\footnotesize\color{maingray}#2\\
 		\tiny\color{black}#3\\
 		\tiny\color{black}#4\\
-	}&\parbox[t]{0.70\textwidth}{%
+	}&\parbox[t]{0.75\textwidth}{%
 		\footnotesize#5\vspace{\parsep}%
 	}\\
 }
