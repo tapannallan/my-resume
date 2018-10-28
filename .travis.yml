@@ -1,10 +1,16 @@
 sudo: required
-dist: trusty
+
+language: ruby
+
+services:
+  - docker
+
 before_install:
-- DEBIAN_FRONTEND=noninteractive sudo apt-get -qq update && sudo apt-get install -y --no-install-recommends unzip texlive-fonts-recommended latex-xcolor texlive-latex-recommended texlive-latex-extra texlive-fonts-extra latexmk
+- docker build -t my-resume .
+
 script:
-- mkdir _build
-- pdflatex -shell-escape -interaction=nonstopmode -output-directory _build resume.tex
+- docker run my-resume
+
 deploy:
   provider: script
   script: sh $TRAVIS_BUILD_DIR/.travis/push.sh
