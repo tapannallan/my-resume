@@ -5,5 +5,3 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get --assume-yes install texlive-latex-ex
 RUN mkdir output
 COPY ./ my-resume/
 RUN cd my-resume && pdflatex -shell-escape -synctex=1 -interaction=nonstopmode resume.tex
-RUN ls
-RUN cp my-resume/resume.pdf /output

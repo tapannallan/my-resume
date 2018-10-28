@@ -6,15 +6,12 @@ services:
   - docker
 
 before_install:
-- ls
 - mkdir -p build
 - rm -rf build/*
 - docker build -t my-resume .
 
 script:
-- docker run -i --rm -v ${PWD}/build:/output my-resume
-- ls
-- ls build
+- docker run -i --rm -v ${PWD}/build:/output my-resume cp my-resume/resume.pdf /output
 
 deploy:
   provider: script
