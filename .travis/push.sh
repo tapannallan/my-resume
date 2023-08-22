@@ -9,7 +9,7 @@ setup_git() {
 upload_files() {  
   git add . -A
   git commit --message "Travis build: $TRAVIS_BUILD_NUMBER [ci skip]"
-  git remote add github-origin https://tapanchandra:${GITHUB_TOKEN}@github.com/tapanchandra/my-resume.git
+  git remote add github-origin https://tapannallan:${GITHUB_TOKEN}@github.com/tapanallan/my-resume.git
   git push --force --quiet github-origin master > /dev/null 2>&1
 }
 
