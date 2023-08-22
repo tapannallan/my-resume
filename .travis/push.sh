@@ -14,6 +14,5 @@ upload_files() {
 }
 
 echo starting push
-cd my-resume
 setup_git
 upload_files
